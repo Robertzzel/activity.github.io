@@ -13,8 +13,8 @@ function generareCarte(tipCarte,nrOrdineCarte){
 
     carteAleasa.style.backgroundImage = `url(${pozaRandom})`
     carteAleasa.style.display = "inline-block";
-    // imgCarte.style.height = "307px";
-    // imgCarte.style.width = "214px";
+    imgCarte.style.height = "307px";
+    imgCarte.style.width = "214px";
     carteAleasa.style.backgroundPositionX = widthRandom
     carteAleasa.style.backgroundPositionY = heightRandom
 }
