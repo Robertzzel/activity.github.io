@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body ng-app="app" ng-controller="main">
+    <img id="board">
+      <pawn ng-repeat="pawn in pawns" color="pawn.color" x="pawn.x" y="pawn.y"></pawn>
+    </img>
+    <button class="btn" id="reset-btn">RESET</button>
+  </body>
+</html>

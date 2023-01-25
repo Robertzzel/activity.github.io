@@ -1,0 +1,16 @@
+body{
+    background-image: url("background.png");
+}
+
+#board {
+    
+}
+
+.btn {
+    font-size: 25px;
+    padding: 10px;
+}
+
+/* #reset-btn{
+    margin-right: 300px;
+} */
