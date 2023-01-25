@@ -1,0 +1,15 @@
+html, body{
+    background-image: url("background.png");
+}
+
+#card-3 {
+    border: 1px solid red;
+}
+
+#card-4 {
+    border: 1px solid blue;
+}
+
+#card-5 {
+    border: 1px solid yellow;
+}
