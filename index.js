@@ -8,35 +8,46 @@ let cols = 12
 let rows = 4
 let interPawnDistance = 10
 
+
+const pawnWidth = 0.026041666666666668 * boardWidth //  0.026041666666666668 // 40
+const pawnHeight = 0.13652912621359223 * boardHeight // 0.13652912621359223 // 90
+const INTER_PAWN_DISTANCE = 0.015169902912621358 * boardHeight // 0.015169902912621358 // 10
+const START_COORDINATES = [0.07161458333333333 * boardWidth, 0.12135922330097086 * boardHeight] // [0.07161458333333333, 0.12135922330097086] // [110, 80]
+const END_COORDINTES = [0, 0]
+const PAWN_STEP_X =  0.07486979166666667 * boardWidth // 0.07486979166666667 // 115
+const PAWN_STEP_Y =  0.15169902912621358 * boardHeight // 0.15169902912621358 // 100
+const BOARD_ROWS = 4
+const OFFSET_ON_EVEN_ROWS = 0.06067961165048543 * boardHeight ;
+
 let getCoordsByPosition = (positionNumber, offset) => {
     if(positionNumber < 0) { // prima pozitie
-        return [110, 80]
+        return START_COORDINATES
     }
     if(positionNumber === 48){
         let [x,y] = getCoordsByPosition(47)
-        y -= 100
+        y -= PAWN_STEP_Y
         return [x, y]
     }
     if(positionNumber >= 49) { // ultima pozitie
-        return [0, 0]
+        return END_COORDINTES
     }
 
     let xPos = parseInt(positionNumber / 4) 
-    let yPos = positionNumber % 4 + 1
+    let yPos = positionNumber % BOARD_ROWS + 1
     let addOffset = xPos % 2 === 0
 
     if(xPos % 2 === 1){
         yPos = 5 - yPos
     }
 
-    xPos = 115 * xPos + 110;
-    yPos = 100 * yPos + 70;
+    xPos = PAWN_STEP_X * xPos + START_COORDINATES[0];
+    yPos = PAWN_STEP_Y * yPos + START_COORDINATES[1];
 
     if(addOffset) {
         yPos += offset
     } else {
         yPos -= offset
-        yPos += 40
+        yPos += OFFSET_ON_EVEN_ROWS
     }
 
     return [xPos, yPos]
@@ -79,8 +90,8 @@ let initFromLocalStorage = () => { // pawns: nr de pioni, pawn-{i} pionul cu nr 
 }
 
 let initPawns = (numberOfTeams) => {
-    let intialCoordsX = 110
-    let intialCoordsY = 80
+    let intialCoordsX = START_COORDINATES[0]
+    let intialCoordsY = START_COORDINATES[1]
     let pawns = []
     for(let i = 0; i < numberOfTeams; i++) {
         pawns.push({color: colors[i], x: intialCoordsX , y: intialCoordsY + interPawnDistance * i, position: -1, offset: i * interPawnDistance})
@@ -168,7 +179,7 @@ let createButtons = (scope) => {
 }
 
 app.component("pawn", {
-    template: '<img ng-src={{$ctrl.image}} style="position: absolute; left: {{$ctrl.x}}px; top: {{$ctrl.y}}px; width: 40px; height: 90px">',
+    template: `<img ng-src={{$ctrl.image}} style="position: absolute; left: {{$ctrl.x}}px; top: {{$ctrl.y}}px; width: ${pawnWidth}px; height: ${pawnHeight}px">`,
     bindings: {
         color: "=",
         x: "=",
