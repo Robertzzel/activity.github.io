@@ -10,29 +10,27 @@ function generareCarte(tipCarte,nrOrdineCarte){
     let widthRandom = `${widthCarte * Math.floor(Math.random()*6)}px`
     let heightRandom = `${heightCarte * Math.floor(Math.random()*6)}px`
     //salveazaInStorage(pozaRandom,widthRandom,heightRandom)
+    console.log(widthRandom, heightRandom)
 
     carteAleasa.style.backgroundImage = `url(${pozaRandom})`
     carteAleasa.style.display = "inline-block";
-    imgCarte.style.height = "307px";
-    imgCarte.style.width = "214px";
+    carteAleasa.style.height = "307px";
+    carteAleasa.style.width = "214px";
     carteAleasa.style.backgroundPositionX = widthRandom
     carteAleasa.style.backgroundPositionY = heightRandom
 }
 
 c3.addEventListener("click", () => {
-    tipCarte = 3
     nrOrdineCarte = Math.floor(Math.random()*6+1)
-    generareCarte(tipCarte,nrOrdineCarte)
+    generareCarte(3,nrOrdineCarte)
 })
 
 c4.addEventListener("click", () => {
-    tipCarte = 4
     nrOrdineCarte = Math.floor(Math.random()*6+1)
-    generareCarte(tipCarte,nrOrdineCarte)
+    generareCarte(4,nrOrdineCarte)
 })
 
 c5.addEventListener("click", () => {
-    tipCarte = 5
     nrOrdineCarte = Math.floor(Math.random()*6+1)
-    generareCarte(tipCarte,nrOrdineCarte)
+    generareCarte(5,nrOrdineCarte)
 })
